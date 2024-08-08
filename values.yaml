@@ -27,3 +27,12 @@ secrets:
 
 ingress:
   enabled: false
+
+resources:
+  limits:
+    cpu: "2028m"          
+    memory: "1024Mi"      
+  requests:
+    cpu: "1024m"           
+    memory: "512Mi"       
+
