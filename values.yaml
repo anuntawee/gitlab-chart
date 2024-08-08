@@ -1,0 +1,29 @@
+replicaCount: 1
+
+image:
+  repository: gitlab/gitlab-ce
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+
+postgresql:
+  enabled: true
+  postgresqlUsername: "gitlab"
+  postgresqlPassword: "UjNkaEB0ITM="
+  postgresqlDatabase: "gitlab_production"
+
+redis:
+  enabled: true
+  password: "UjNkaEB0ITM=" 
+
+secrets:
+  gitlabRootPassword: "UjNkaEB0ITM="
+  postgresPassword: "UjNkaEB0ITM="
+  redisPassword: "UjNkaEB0ITM="
+
+ingress:
+  enabled: false
