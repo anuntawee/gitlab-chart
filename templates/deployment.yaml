@@ -43,7 +43,13 @@ spec:
         envFrom:
         - secretRef:
             name: gitlab-secret
-
+          volumeMounts:
+          - name: gitlab-data
+            mountPath: "{{ .Values.persistence.mountPath }}"
+      volumes:
+      - name: gitlab-data
+        persistentVolumeClaim:
+          claimName: gitlab-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -59,3 +65,32 @@ spec:
     targetPort: 80
   selector:
     app: gitlab
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gitlab-pv
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/gitlab 
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gitlab-pvc
+  namespace: "{{ .Release.Namespace }}"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+
+
+

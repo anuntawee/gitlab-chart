@@ -28,6 +28,9 @@ secrets:
   postgresPassword: UjNkaEB0ITM=
   redisPassword: UjNkaEB0ITM=
 
+persistence:
+  enabled: true
+  mountPath: /var/opt/gitlab
+
 ingress:
   enabled: false
-
