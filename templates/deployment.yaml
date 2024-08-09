@@ -36,13 +36,9 @@ spec:
             secretKeyRef:
               name: gitlab-secret
               key: redis-password
-        resources:
-            requests:
-              cpu: {{ .Values.resources.requests.cpu }}
-              memory: {{ .Values.resources.requests.memory }}
-            limits:
-              cpu: {{ .Values.resources.limits.cpu }}
-              memory: {{ .Values.resources.limits.memory }}
+        envFrom:
+        - secretRef:
+            name: gitlab-secret
 ---
 apiVersion: v1
 kind: Service

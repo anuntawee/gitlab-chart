@@ -12,27 +12,17 @@ service:
 
 postgresql:
   enabled: true
-  postgresqlUsername: "gitlab"
-  postgresqlPassword: "UjNkaEB0ITM="
-  postgresqlDatabase: "gitlab_production"
+  postgresqlUsername: gitlab
+  postgresqlPassword: admin
+  postgresqlDatabase: gitlab_production
 
 redis:
   enabled: true
-  password: "UjNkaEB0ITM=" 
 
 secrets:
-  gitlabRootPassword: "UjNkaEB0ITM="
-  postgresPassword: "UjNkaEB0ITM="
-  redisPassword: "UjNkaEB0ITM="
+  gitlabRootPassword: UjNkaEB0ITM=
+  postgresPassword: UjNkaEB0ITM=
+  redisPassword: UjNkaEB0ITM=
 
 ingress:
   enabled: false
-
-resources:
-  limits:
-    cpu: "2028m"          
-    memory: "1024Mi"      
-  requests:
-    cpu: "1024m"           
-    memory: "512Mi"       
-

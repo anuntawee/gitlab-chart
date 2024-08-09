@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:latest
+        image: "redis:latest"
         env:
         - name: REDIS_PASSWORD
           valueFrom:
@@ -24,13 +24,6 @@ spec:
               key: redis-password
         ports:
         - containerPort: 6379
-      resources:
-        requests:
-          cpu: {{ .Values.resources.requests.cpu }}
-          memory: {{ .Values.resources.requests.memory }}
-        limits:
-          cpu: {{ .Values.resources.limits.cpu }}
-          memory: {{ .Values.resources.limits.memory }}
 ---
 apiVersion: v1
 kind: Service
