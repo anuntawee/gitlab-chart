@@ -17,7 +17,11 @@ postgresql:
   postgresqlDatabase: gitlab_production
 
 redis:
-  enabled: true
+  enabled: false
+  external:
+    host: 192.168.22.2
+    port: 6379
+    password: "{{ .Values.secrets.redisPassword }}"
 
 secrets:
   gitlabRootPassword: UjNkaEB0ITM=
@@ -26,3 +30,4 @@ secrets:
 
 ingress:
   enabled: false
+
