@@ -49,7 +49,7 @@ spec:
       volumes:
       - name: gitlab-data
         persistentVolumeClaim:
-          claimName: gitlab-pvc
+          claimName: "{{ .Values.persistence.existingClaim }}"
 ---
 apiVersion: v1
 kind: Service
@@ -76,6 +76,7 @@ spec:
     storage: 10Gi
   accessModes:
     - ReadWriteOnce
+  storageClassName: gitlab-data
   hostPath:
     path: /data/gitlab 
   persistentVolumeReclaimPolicy: Retain
@@ -88,6 +89,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: gitlab-data
   resources:
     requests:
       storage: 10Gi

@@ -31,6 +31,11 @@ secrets:
 persistence:
   enabled: true
   mountPath: /var/opt/gitlab
+  size: 10Gi
+  storageClass: gitlab-data 
+  accessMode: ReadWriteOnce
+  existingClaim: gitlab-pvc
+
 
 ingress:
   enabled: false
